@@ -8,5 +8,12 @@ For any questions please do not hesitate to ask. This project is on going so ple
 https://github.com/bdupitas/Cineplex/projects/1
 
 
+Front-end: React.js
+    PrimeReact CSS
+Back-end: TBD
+
+
+
+
 Personal-Webpage for an overview about me :)
 https://bdupitas.com
