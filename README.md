@@ -1,5 +1,5 @@
 # Cineplex
-A video-streaming project Single Page Application
+A video-streaming application
 
 Hello! 
 Thank you for visiting this project.This is a full stack application that will be a netflix-clone streaming application. This will compass a server and streaming content like home movies through the browser. 
