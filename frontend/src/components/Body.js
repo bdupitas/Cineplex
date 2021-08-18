@@ -4,6 +4,8 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
+import ReactPlayer from 'react-player/lazy'
+
 const items = [
     {
        label:'File',
@@ -136,7 +138,7 @@ const Body = () => {
     return (
         <>
             <Menubar model={items}/>
-            <h1>HELLO</h1>
+            <ReactPlayer url="https://www.youtube.com/watch?v=GwaRztMaoY0" />
         </>
     );
 
