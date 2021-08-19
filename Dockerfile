@@ -11,3 +11,4 @@ COPY . .
 EXPOSE 3000
 
 CMD [ "node", "server.js" ]
+#https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
