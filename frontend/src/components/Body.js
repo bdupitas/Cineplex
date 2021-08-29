@@ -1,148 +1,36 @@
-import React from "react"
-import { Menubar } from 'primereact/menubar';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import React from "react";
+import VideoPlayer from "./VideoPlayer";
 
-import ReactPlayer from 'react-player/lazy'
-
-const items = [
-    {
-       label:'File',
-       icon:'pi pi-fw pi-file',
-       items:[
-          {
-             label:'New',
-             icon:'pi pi-fw pi-plus',
-             items:[
-                {
-                   label:'Bookmark',
-                   icon:'pi pi-fw pi-bookmark'
-                },
-                {
-                   label:'Video',
-                   icon:'pi pi-fw pi-video'
-                },
-
-             ]
-          },
-          {
-             label:'Delete',
-             icon:'pi pi-fw pi-trash'
-          },
-          {
-             separator:true
-          },
-          {
-             label:'Export',
-             icon:'pi pi-fw pi-external-link'
-          }
-       ]
-    },
-    {
-       label:'Edit',
-       icon:'pi pi-fw pi-pencil',
-       items:[
-          {
-             label:'Left',
-             icon:'pi pi-fw pi-align-left'
-          },
-          {
-             label:'Right',
-             icon:'pi pi-fw pi-align-right'
-          },
-          {
-             label:'Center',
-             icon:'pi pi-fw pi-align-center'
-          },
-          {
-             label:'Justify',
-             icon:'pi pi-fw pi-align-justify'
-          },
-
-       ]
-    },
-    {
-       label:'Users',
-       icon:'pi pi-fw pi-user',
-       items:[
-          {
-             label:'New',
-             icon:'pi pi-fw pi-user-plus',
-
-          },
-          {
-             label:'Delete',
-             icon:'pi pi-fw pi-user-minus',
-
-          },
-          {
-             label:'Search',
-             icon:'pi pi-fw pi-users',
-             items:[
-                {
-                   label:'Filter',
-                   icon:'pi pi-fw pi-filter',
-                   items:[
-                      {
-                         label:'Print',
-                         icon:'pi pi-fw pi-print'
-                      }
-                   ]
-                },
-                {
-                   icon:'pi pi-fw pi-bars',
-                   label:'List'
-                }
-             ]
-          }
-       ]
-    },
-    {
-       label:'Events',
-       icon:'pi pi-fw pi-calendar',
-       items:[
-          {
-             label:'Edit',
-             icon:'pi pi-fw pi-pencil',
-             items:[
-                {
-                   label:'Save',
-                   icon:'pi pi-fw pi-calendar-plus'
-                },
-                {
-                   label:'Delete',
-                   icon:'pi pi-fw pi-calendar-minus'
-                },
-
-             ]
-          },
-          {
-             label:'Archieve',
-             icon:'pi pi-fw pi-calendar-times',
-             items:[
-                {
-                   label:'Remove',
-                   icon:'pi pi-fw pi-calendar-minus'
-                }
-             ]
-          }
-       ]
-    },
-    {
-       label:'Quit',
-       icon:'pi pi-fw pi-power-off'
-    }
- ];
 const Body = () => {
-    return (
-        <>
-            <Menubar model={items}/>
-            <ReactPlayer url="https://www.youtube.com/watch?v=GwaRztMaoY0" />
-        </>
-    );
+  const playerRef = React.useRef(null);
 
-}
+  const videoJsOptions = {
+    // lookup the options in the docs for more options
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    sources: [
+      {
+        src: "//vjs.zencdn.net/v/oceans.mp4",
+        type: "video/mp4",
+      },
+    ],
+  };
 
+  const handlePlayerReady = (player) => {
+    playerRef.current = player;
 
-export default Body
+    // you can handle player events here
+    player.on("waiting", () => {
+      console.log("player is waiting");
+    });
+
+    player.on("dispose", () => {
+      console.log("player will dispose");
+    });
+  };
+  return <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} />;
+};
+
+export default Body;
